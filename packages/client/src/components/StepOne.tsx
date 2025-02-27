@@ -8,7 +8,7 @@ import {
   UseFormWatch,
 } from "react-hook-form";
 import { propertyTypes, regions, districtsByRegion } from "./const";
-import { StepOneFormData } from "./Form";
+import { StepOneFormData } from "../types";
 
 interface StepOneProps {
   handleStepOneSubmit: React.FormEventHandler<HTMLFormElement>;
