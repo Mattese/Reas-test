@@ -1,10 +1,12 @@
 import TwoStepForm from "./components/Form";
 
+import { ToastContainer } from "react-toastify";
+
 function App() {
   return (
     <>
-      <h1>Vite + React</h1>
       <TwoStepForm />
+      <ToastContainer />
     </>
   );
 }
