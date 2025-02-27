@@ -8,18 +8,20 @@
   },
   "dependencies": {
     "body-parser": "^1.x.x",
+    "cors": "^2.8.5",
     "express": "^4.x.x",
     "mongoose": "^6.x.x"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/mongoose": "^5.x.x",
     "@types/node": "^22.13.5",
     "eslint": "^9.21.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-plugin-typescript": "^0.14.0",
+    "express-validator": "^7.2.1",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.7.3",
-    "express-validator": "^7.2.1"
+    "typescript": "^5.7.3"
   }
 }
