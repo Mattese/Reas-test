@@ -1,7 +1,7 @@
 import { IconButton, Typography, TextField, Button } from "@mui/material";
 import { Control, Controller } from "react-hook-form";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { StepTwoFormData } from "./Form";
+import { StepTwoFormData } from "../types";
 
 interface StepTwoProps {
   onBack: () => void;

@@ -6,18 +6,7 @@ import { stepOneSchema, stepTwoSchema } from "../validationSchema/schemas";
 
 import { StepOne } from "./StepOne";
 import { StepTwo } from "./StepTwo";
-
-export interface StepOneFormData {
-  propertyType: string;
-  region: string;
-  district?: string;
-}
-
-export interface StepTwoFormData {
-  name: string;
-  email: string;
-  phone: string;
-}
+import { StepOneFormData, StepTwoFormData } from "../types";
 
 const TwoStepForm = () => {
   const [step, setStep] = useState(1);
