@@ -9,6 +9,6 @@ RUN yarn install
 
 COPY . .
 
-EXPOSE 5173
+EXPOSE ${REACT_APP_CLIENT_PORT:-5173}
 
 CMD ["yarn", "dev"]
