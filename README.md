@@ -4,6 +4,7 @@
 
 - [Docker](https://www.docker.com/get-started) installed on your machine.
 - [Docker Compose](https://docs.docker.com/compose/install/) installed.
+- Running docker on your machine.
 
 # Getting Started
 
