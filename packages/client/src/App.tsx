@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router";
 import TwoStepForm from "./components/Form";
 
 import { ToastContainer } from "react-toastify";
@@ -5,7 +6,9 @@ import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <>
-      <TwoStepForm />
+      <Routes>
+        <Route path="/chci-nabidku" element={<TwoStepForm />} />
+      </Routes>
       <ToastContainer />
     </>
   );
