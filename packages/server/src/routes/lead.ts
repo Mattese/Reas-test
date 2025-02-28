@@ -1,20 +1,15 @@
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 
-import { leadModel } from "../models/lead";
-const { leadValidation, validate } = require("../validations/leadValidation");
-import { body, validationResult } from "express-validator";
+import { leadValidation } from "../validations/leadValidation";
+import { validationResult } from "express-validator";
+import { leadModel } from "../database/models/leadModel";
 
 const router = express.Router();
 
 router.post(
   "/lead",
-  body("propertyType").isString().notEmpty(),
-  body("region").isString().notEmpty(),
-  body("district").isString().optional(),
-  body("name").isString().notEmpty(),
-  body("email").isEmail(),
-  body("phone").isMobilePhone("cs-CZ"),
-  (req: Request, res: Response, next) => {
+  leadValidation,
+  (req: Request, res: Response, next: NextFunction) => {
     console.log("req.body", req.body);
 
     const errors = validationResult(req);
@@ -25,22 +20,31 @@ router.post(
     }
     next();
   },
-  async (req: Request, res: Response) => {
+
+  (req: Request, res: Response) => {
     console.log("req.body", req.body);
+    const lead = req.body;
 
-    try {
-      // Create a new lead
-      // const newLead = new leadModel(req.body);
-      // await newLead.save();
-
-      // Respond with the created lead
-      // res.status(201).json({ message: "Lead created", lead: newLead });
-      res.status(201).json({ message: "Lead created" });
-    } catch (error) {
-      console.error("Error saving lead:", error);
-      res.status(500).json({ message: "Internal Server Error" });
-    }
+    const newLead = new leadModel(lead);
+    newLead.save((err, result) => {
+      if (err) {
+        console.error("Error saving lead:", err);
+        res.status(500).json({ message: "Internal Server Error while saving lead" });
+      } else {
+        res.status(201).json({ message: "Lead created" });
+      }
+    });
   }
 );
+
+router.get("/lead", async (req: Request, res: Response) => {
+  try {
+    const leads = await leadModel.find();
+    res.status(200).json(leads);
+  } catch (error) {
+    console.error("Error getting leads:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
 export default router;

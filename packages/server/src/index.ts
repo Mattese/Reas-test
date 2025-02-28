@@ -6,7 +6,7 @@ import cors from "cors";
 
 dotenv.config();
 const app = express();
-// connectDB();
+connectDB();
 app.use(cors());
 app.use(express.json());
 app.use("/api", leadRoutes);

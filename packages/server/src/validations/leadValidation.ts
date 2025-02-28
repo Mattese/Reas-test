@@ -1,26 +1,12 @@
-import { NextFunction } from "express";
-import { body, validationResult } from "express-validator";
+import { body } from "express-validator";
 
 const leadValidation = [
-  body("estateType").isString().notEmpty(),
-  body("fullname").isString().notEmpty(),
-  body("phone")
-    .isString()
-    .matches(/^\d{3} \d{3} \d{3}$/)
-    .withMessage("Phone must be in the format xxx xxx xxx"),
-  body("email").isEmail().withMessage("Must be a valid email"),
+  body("propertyType").isString().notEmpty(),
   body("region").isString().notEmpty(),
-  body("district").isString().notEmpty(),
+  body("district").isString().optional(),
+  body("name").isString().notEmpty(),
+  body("email").isEmail(),
+  body("phone").isMobilePhone("cs-CZ"),
 ];
 
-const validate = (req: Request, res: Response, next: NextFunction) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    // TODO: Log errors
-    // @ts-expect-error errors is an instance of Result
-    return res.status(400).json({ errors: errors.array() });
-  }
-  next();
-};
-
-export { leadValidation, validate };
+export { leadValidation };
