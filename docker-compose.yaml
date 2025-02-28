@@ -8,7 +8,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - MONGODB_URI=mongodb://mongo:27017/Reas
+      - MONGODB_URI=${MONGODB_URI}
     depends_on:
       - mongo
     command: sh -c "yarn dev && echo 'Backend is running at http://localhost:3000'"

@@ -27,6 +27,7 @@ router.post(
 
     const newLead = new leadModel(lead);
     newLead.save((err, result) => {
+      console.log("result", result);
       if (err) {
         console.error("Error saving lead:", err);
         res.status(500).json({ message: "Internal Server Error while saving lead" });

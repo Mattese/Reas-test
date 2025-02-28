@@ -8,11 +8,9 @@ export const connectDB = async () => {
     if (!process.env.MONGODB_URI) {
       throw new Error("MongoDB URI is not defined");
     } else {
-      // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/Reas");
-      // await mongoose.connect("mongodb://localhost:27017/Reas");
-      // console.log("MongoDB connected to:", "mongodb://localhost:27017/Reas");
-      await mongoose.connect("mongodb://localhost:27017/test");
-      console.log("MongoDB connected to:", "mongodb://localhost:27017/test");
+      console.log("Connecting to MongoDB...", process.env.MONGODB_URI);
+      await mongoose.connect(process.env.MONGODB_URI);
+      console.log("MongoDB connected to:", process.env.MONGODB_URI);
     }
   } catch (error) {
     // TODO: Log error
