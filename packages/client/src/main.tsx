@@ -4,8 +4,10 @@ import App from "./App.tsx";
 import { BrowserRouter, Route, Routes } from "react-router";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_APP_API_URL;
+
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: apiUrl,
 });
 
 export default axiosInstance;
