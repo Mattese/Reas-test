@@ -1,19 +1,7 @@
 import mongoose from "mongoose";
 
-const leadSchema = new mongoose.Schema({
-  estateType: {
-    type: String,
-    required: true,
-  },
-  fullname: {
-    type: String,
-    required: true,
-  },
-  phone: {
-    type: String,
-    required: true,
-  },
-  email: {
+export const leadSchema = new mongoose.Schema({
+  propertyType: {
     type: String,
     required: true,
   },
@@ -23,8 +11,17 @@ const leadSchema = new mongoose.Schema({
   },
   district: {
     type: String,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
     required: true,
   },
 });
-
-export const leadModel = mongoose.model("Lead", leadSchema);
